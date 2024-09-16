@@ -1,8 +1,9 @@
 {
-  "name": "untitled1",
+  "name": "Easy routing app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "author": "Wiktor Tatarynowicz",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
