@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-
+const url = require('url');
 const port = 3000;
 
 
@@ -9,7 +9,8 @@ const server = http.createServer((req, res) => {
     if (req.url === '/') {
         res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
         res.end('Strona główna');
-    } else if (req.url === '/json') {
+    }
+    else if (req.url === '/json') {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         const jsonResponse = {
             message: 'Przykładowy dokument JSON',
@@ -38,7 +39,8 @@ const server = http.createServer((req, res) => {
             </body>
             </html>
         `);
-    } else if (req.url === '/file') {
+    }
+    else if (req.url === '/file') {
         const filePath = path.join(__dirname, 'index.html');
         fs.readFile(filePath, (err, data) => {
             if (err) {
@@ -51,12 +53,34 @@ const server = http.createServer((req, res) => {
             }
         });
     }
+    else if(req.url === '/get_params') {
+        var tab_get =[] ;
+        const url_req = url.parse(req.url);
+        res.end('Pobieranie parametroww z metody get');
+        for (let i = 0; i < url_req.size; i++) {
+            tab_get.push(url_req[i]);
+        }
+        console.log(tab_get);
+        
+
+    }
     else {
         res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
         res.end('404: Strona nie została znaleziona');
     }
 });
 
-server.listen(port, () => {
+server.listen(port, '127.0.0.1',() => {
     console.log(`Serwer działa na http://localhost:${port}`);
 });
+
+
+const storeData = (data, path) => {
+    try {
+        fs.writeFileSync(path, JSON.stringify(data))
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+module.exports = storeData;
