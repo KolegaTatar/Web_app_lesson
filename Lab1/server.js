@@ -3,13 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const port = 3000;
+const host = 'localhost';
+
+let data=[];
 
 function saveToFile(params) {
-    const timestamp = Date.now();
-    //const date_object = new Date(timestamp).getTime();
+    const timestamp =new Date().toISOString().replace(/:/g, '-')
 
     const filePath = path.join(__dirname, `params_${timestamp}.json`);
-
     fs.writeFile(filePath, JSON.stringify(params, null, 2), (err) => {
         if (err) {
             console.error('Wystąpił błąd przy zapisie do pliku:', err);
@@ -80,14 +81,9 @@ const server = http.createServer((req, res) => {
             console.log("Podaj dowolne parametry metodą GET!!");
             return;
         }
-        const paramsTab = Object.entries(queryParams);
-        console.log("Otrzymane paramtery motodą GET:", queryParams);
-
-
-
-
-        saveToFile(paramsTab); //zapis do pliku
-
+        data.push(queryParams);
+        console.log("Otrzymane paramtery motodą GET:", data);
+        saveToFile(data); //zapis do pliku
         res.end(JSON.stringify({ok: 'ok'}));
 
     }
@@ -98,5 +94,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, '127.0.0.1',() => {
-    console.log(`Serwer działa na http://localhost:${port}`);
+    console.log(`Serwer działa na http://${host}:${port}`);
 });
