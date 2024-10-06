@@ -21,6 +21,28 @@ function saveToFile(params) {
     });
 }
 
+function getMimeType(filePath) {
+    const extname = path.extname(filePath).toLowerCase();
+    const mimeTypes = {
+        '.html': 'text/html',
+        '.js': 'application/javascript',
+        '.css': 'text/css',
+        '.json': 'application/json',
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.gif': 'image/gif',
+        '.svg': 'image/svg+xml',
+        '.wav': 'audio/wav',
+        '.mp4': 'video/mp4',
+        '.woff': 'font/woff',
+        '.ttf': 'font/ttf',
+        '.eot': 'application/vnd.ms-fontobject',
+        '.otf': 'font/otf',
+        '.wasm': 'application/wasm'
+    };
+    return mimeTypes[extname] || 'application/octet-stream';
+}
+
 const server = http.createServer((req, res) => {
 
     const url_req = url.parse(req.url, true);
@@ -88,8 +110,21 @@ const server = http.createServer((req, res) => {
 
     }
     else {
-        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        const filePath = path.join(__dirname, 'assets', url_req.pathname);
+        /*res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
         res.end('404: Strona nie została znaleziona');
+        */
+
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'application/json; charset=utf-8' });
+                res.end(JSON.stringify({ error: 'Plik nie został znaleziony' }));
+            } else {
+                const mimeType = getMimeType(filePath);
+                res.writeHead(200, { 'Content-Type': mimeType });
+                res.end(data);
+            }
+        });
     }
 });
 
