@@ -2,39 +2,91 @@
 <html lang="pl-PL">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <meta name="author" content="Wiktor Tatarynowicz">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-<header>
-  <h1>O firmie</h1>
-    <nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Strona główna</a></li>
+                <li><a href="/About">O nas</a></li>
+                <li><a href="/Offert">Oferta</a></li>
+                <li><a href="/Contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>O firmie</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum convallis erat eu metus.</p>
+        <p>Integer dignissim ultricies augue, a posuere metus congue sit amet.</p>
 
-    </nav>
-</header>
-<main>
-    <h1>O firmie</h1>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tellus augue, hendrerit vel diam vitae, varius commodo nibh. Curabitur diam nisi, bibendum ut urna eget, rutrum porttitor velit. Quisque at tempor dui, ac accumsan tellus. Donec pretium eu est nec luctus. Sed id sem sed massa condimentum egestas. Donec egestas est at pellentesque blandit. Nulla et malesuada nisl. Fusce non convallis neque. Curabitur a dapibus nunc. Mauris euismod erat ut arcu egestas elementum. Nunc sed justo rutrum, rhoncus sapien ac, tristique mi.
-        Nam facilisis ante ligula, sed suscipit orci vestibulum id. Donec egestas ante velit. Etiam tempor ullamcorper nibh. Mauris pulvinar aliquet eleifend. Praesent lobortis accumsan luctus. Fusce tellus ipsum, lobortis ut ante at, euismod auctor ex. Vestibulum quis mollis lorem. Vestibulum in leo augue.
-    </p>
-    <p>
-        Sed erat justo, laoreet a nunc ut, gravida fermentum ex. Donec tincidunt leo vitae ullamcorper rutrum. Cras ac dictum purus, ut convallis nisl. Suspendisse lobortis tellus sit amet imperdiet vulputate. Aenean non aliquam est. Fusce lacinia convallis erat accumsan placerat. Cras pellentesque eleifend risus non dapibus.
-    </p>
-    <p>
-        Donec ultrices elit congue est iaculis, id eleifend urna semper. Nullam tempor elementum magna at ultricies. Nulla in eros erat. Etiam ut dui ac orci iaculis dignissim. Curabitur aliquet leo vitae iaculis malesuada. Duis ut sollicitudin magna. Cras vel sem sit amet elit condimentum ultricies dictum id nulla. Aenean vel posuere lacus.
-    </p>
-    <p>
-        Vestibulum aliquam diam vel justo sollicitudin, at porta lectus ultricies. Donec libero lorem, elementum in rhoncus a, porta sit amet leo. Mauris a placerat mauris. Nunc in egestas lectus. Sed et gravida justo, eget efficitur eros. Quisque fermentum elit vel ultricies maximus. Suspendisse eget nibh et dui mollis sodales sit amet sit amet urna. Ut auctor placerat malesuada. Proin quis sagittis leo, sed suscipit erat. Maecenas ac fermentum erat. Pellentesque sit amet metus nibh. Integer scelerisque tristique nulla et accumsan.
-    </p>
-    <h3>Slajder ze zdjeciami:</h3>
-    <img src="static/zdj1.png">
-    <img src="static/zdj2.png">
-    <img src="static/zdj3.png">
-    <img src="static/zdj4.png">
-    <img src="static/zdj5.png">
-</main>
-<footer>
-    Autor: Wiktor Tatarynowicz, 4C
-</footer>
+        <h3>Slajder ze zdjeciami:</h3>
+        <div class="slider">
+            <div class="slider-wrapper">
+                <div class="slider-item">
+                    <img src="/static/zdj1.jpg">
+                </div>
+                <div class="slider-item">
+                    <img src="/static/zdj2.jpg">
+                </div>
+                <div class="slider-item">
+                    <img src="/static/zdj3.jpg">
+                </div>
+                <div class="slider-item">
+                    <img src="/static/zdj4.jpg">
+                </div>
+                <div class="slider-item">
+                    <img src="/static/zdj5.jpg">
+                </div>
+
+            </div>
+        </div>
+        <button id="prev" class="slider-button">Poprzedni</button>
+        <button id="next" class="slider-button">Następny</button>
+
+    </main>
+    <footer>
+        <p>Autor: Wiktor Tatarynowicz, 4C</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            const slides = document.querySelectorAll('.slider-item');
+            const nextButton = document.getElementById('next');
+            const prevButton = document.getElementById('prev');
+
+            let currentIndex = 0;
+
+            function updateSlider() {
+                sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            nextButton.addEventListener('click', () => {
+                currentIndex++;
+                if (currentIndex >= slides.length) {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = slides.length - 1;
+                }
+                updateSlider();
+            });
+            setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= slides.length) {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
