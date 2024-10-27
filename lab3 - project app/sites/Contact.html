@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona główna</title>
+    <title>Kontakt</title>
     <meta name="author" content="Wiktor Tatarynowicz">
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" type="image/x-icon" href="/static/logo_no_bg.webp">
+    <link rel="icon" type="image/x-icon" href="/static/web.webp">
 </head>
 <body>
     <header>
@@ -22,15 +22,15 @@
     <main>
         <h1>Kontakt</h1>
         <div class="form-container">
-            <form action="/kontakt" method="POST">
+            <form action="/Contact" method="POST">
                 <div class="form-group">
                     <label for="imie">Imię:</label>
-                    <input type="text" id="imie" name="imie" required>
+                    <input type="text" id="imie" name="first_name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="nazwisko">Nazwisko:</label>
-                    <input type="text" id="nazwisko" name="nazwisko" required>
+                    <input type="text" id="nazwisko" name="last_name" required>
                 </div>
 
                 <div class="form-group">
@@ -40,7 +40,7 @@
 
                 <div class="form-group">
                     <label for="wiadomosc">Treść wiadomości:</label>
-                    <textarea id="wiadomosc" name="wiadomosc" rows="5" required></textarea>
+                    <textarea id="wiadomosc" name="message" rows="5" required></textarea>
                 </div>
 
                 <div class="form-group">

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona główna</title>
+    <title>Oferta</title>
     <meta name="author" content="Wiktor Tatarynowicz">
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" type="image/x-icon" href="/static/logo_no_bg.webp">
+    <link rel="icon" type="image/x-icon" href="/static/web.webp">
 </head>
 <body>
     <header>
@@ -20,30 +20,110 @@
         </nav>
     </header>
     <main>
-        <h1>Oferta</h1>
-        <p>Oferujemy usługi IT na najwyższym poziomie. Nasza oferta obejmuje:</p>
-        <table>
-            <tr>
-                <th>Usługa</th>
-                <th>Cena</th>
-            </tr>
-            <tr>
-                <td>Tworzenie stron internetowych</td>
-                <td>2000 PLN</td>
-            </tr>
-            <tr>
-                <td>Administracja serwerami</td>
-                <td>1500 PLN</td>
-            </tr>
-            <tr>
-                <td>Audyt bezpieczeństwa</td>
-                <td>3000 PLN</td>
-            </tr>
-        </table>
+        <div class="div1">
+            <h1>Oferta</h1>
+            <p>Oferujemy usługi IT na najwyższym poziomie. Nasza oferta obejmuje:</p>
+            <table>
+                <tr>
+                    <th>Usługa</th>
+                    <th>Cena</th>
+                </tr>
+                <tr>
+                    <td>Tworzenie stron internetowych</td>
+                    <td>2000 PLN</td>
+                </tr>
+                <tr>
+                    <td>Administracja serwerami</td>
+                    <td>1500 PLN</td>
+                </tr>
+                <tr>
+                    <td>Audyt bezpieczeństwa</td>
+                    <td>3000 PLN</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="div2">
+            <h1>Komentarze użytkowników</h1>
+            <form id="commentForm">
+                <input type="text" id="author" placeholder="Twoje imię" required>
+                <textarea id="content" rows="4" placeholder="Twój komentarz" required></textarea>
+                <button type="submit">Dodaj komentarz</button>
+            </form>
+
+            <div class="comments-container" id="commentsContainer"></div>
+        </div>
     </main>
 
     <footer>
         <p>Autor: Wiktor Tatarynowicz, 4C</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const commentsContainer = document.getElementById('commentsContainer');
+            const commentForm = document.getElementById('commentForm');
+
+            const loadComments = () => {
+                let comments = JSON.parse(localStorage.getItem('comments')) || [
+                    { author: 'Jan Kowalski', content: 'To jest pierwszy przykładowy komentarz.' },
+                    { author: 'Anna Nowak', content: 'To jest drugi przykładowy komentarz.' }
+                ];
+                localStorage.setItem('comments', JSON.stringify(comments));
+                displayComments(comments);
+            };
+
+            const displayComments = (comments) => {
+                commentsContainer.innerHTML = '';
+                comments.forEach((comment, index) => {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.classList.add('comment');
+
+                    const author = document.createElement('p');
+                    author.classList.add('comment-author');
+                    author.textContent = comment.author;
+
+                    const content = document.createElement('p');
+                    content.classList.add('comment-content');
+                    content.textContent = comment.content;
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.classList.add('delete-button');
+                    deleteButton.textContent = 'Usuń';
+                    deleteButton.onclick = () => deleteComment(index);
+
+                    commentDiv.appendChild(author);
+                    commentDiv.appendChild(content);
+                    commentDiv.appendChild(deleteButton);
+
+                    commentsContainer.appendChild(commentDiv);
+                });
+            };
+
+            const addComment = (author, content) => {
+                const comments = JSON.parse(localStorage.getItem('comments')) || [];
+                comments.push({ author, content });
+                localStorage.setItem('comments', JSON.stringify(comments));
+                displayComments(comments);
+            };
+
+            const deleteComment = (index) => {
+                let comments = JSON.parse(localStorage.getItem('comments')) || [];
+                comments.splice(index, 1);
+                localStorage.setItem('comments', JSON.stringify(comments));
+                displayComments(comments);
+            };
+
+            commentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const author = document.getElementById('author').value;
+                const content = document.getElementById('content').value;
+                addComment(author, content);
+                commentForm.reset();
+            });
+
+            loadComments();
+        });
+    </script>
 </body>
 </html>

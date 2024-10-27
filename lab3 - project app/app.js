@@ -5,6 +5,9 @@ const app = express();
 const port = 3000;
 const host = 'localhost';
 const bodyParser = require('body-parser');
+
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
@@ -59,7 +62,33 @@ app.post('/Contact', (req, res) => {
     }
 
     console.log('Wiadomość zapisana:', result.insertId);
-    res.redirect('/');
+    res.redirect('/?success=1');
+  });
+});
+
+app.get('/api/contact-messages', (req, res) => {
+  const query = 'SELECT * FROM messages';
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Błąd podczas pobierania wiadomości:', err);
+      return res.status(500).json({ error: 'Błąd serwera' });
+    }
+    res.json(results);
+  });
+});
+
+app.get('/api/contact-messages/:id', (req, res) => {
+  const { id } = req.params;
+  const query = 'SELECT * FROM messages WHERE id = ?';
+  db.query(query, [id], (err, results) => {
+    if (err) {
+      console.error('Błąd podczas pobierania wiadomości:', err);
+      return res.status(500).json({ error: 'Błąd serwera' });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Nie znaleziono wiadomości o podanym ID' });
+    }
+    res.json(results[0]);
   });
 });
 

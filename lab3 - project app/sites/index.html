@@ -6,7 +6,7 @@
     <title>Strona główna</title>
     <meta name="author" content="Wiktor Tatarynowicz">
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" type="image/x-icon" href="/static/logo_no_bg.webp">
+    <link rel="icon" type="image/x-icon" href="/static/web.webp">
 </head>
 <body>
     <header>
@@ -27,10 +27,23 @@
         <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, quae, voluptas? Architecto earum minima nam nihil numquam officiis placeat quas quo sed voluptatem. Ipsa natus nobis reiciendis, repellendus sapiente unde!</span><span>Consectetur delectus dolore, dolores et explicabo fugit impedit incidunt inventore magni minus molestiae nesciunt nisi nobis perspiciatis quia recusandae reiciendis repellat repudiandae similique temporibus unde veritatis vero. Non, sint, voluptate.</span><span>Aut commodi dolorum eligendi esse harum incidunt inventore quas, quasi suscipit voluptatum! Ab aperiam, dignissimos doloribus, eveniet fugit hic id incidunt mollitia necessitatibus nisi provident quasi qui quia soluta temporibus.</span><span>Ad aspernatur aut beatae commodi dignissimos dolorum ducimus eius eos expedita iusto labore, necessitatibus nemo nisi provident quia quos repellendus, sit totam velit voluptatibus! Aliquam delectus fugit nulla temporibus voluptates.</span><span>Et in, rerum? Dignissimos fugiat non tenetur. Ab ad adipisci aliquam aliquid blanditiis, consequatur consequuntur cum dolorem fugiat impedit iure laborum maiores neque nobis perferendis qui reiciendis similique voluptates voluptatum.</span><span>Ab ad atque consectetur, dignissimos dolorem ducimus ea eveniet incidunt modi nam, natus voluptatem voluptatibus? Aspernatur assumenda est exercitationem impedit iste laboriosam, libero, numquam possimus provident quam reprehenderit, ullam vitae!</span><span>Incidunt iure laborum libero nesciunt quam totam ut vitae. Animi aperiam cum delectus deserunt dolorem eius est ex inventore, modi optio pariatur similique, sint? Deleniti distinctio dolorem eaque placeat rem.</span><span>Alias aut consectetur culpa dignissimos doloribus illum numquam provident quaerat quis ratione. A culpa delectus, deserunt eligendi et fugiat impedit iste labore nesciunt nihil nobis obcaecati quidem quo, sed totam.</span><span>Aliquam atque beatae, culpa cumque dolor doloribus ducimus eveniet excepturi exercitationem fuga fugiat illum iste itaque labore laborum non pariatur possimus qui rem repellendus reprehenderit sequi similique soluta sunt veniam.</span><span>Alias at commodi delectus deserunt dolore, doloremque, dolorum eius eligendi laborum minima nesciunt omnis provident quae rem, sequi sit suscipit! Cupiditate est illum perferendis quas quis. Ipsa labore neque qui?</span>
         </p>
 
-
+        <div id="successMessage">Wiadomość została wysłana pomyślnie!</div>
     </main>
     <footer>
         <p>Autor: Wiktor Tatarynowicz, 4C </p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success') && urlParams.get('success') === '1') {
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'block';
+
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
 </body>
 </html>
