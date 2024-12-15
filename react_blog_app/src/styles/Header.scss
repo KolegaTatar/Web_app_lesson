@@ -1,0 +1,33 @@
+.header {
+  background-color: #4caf50;
+  padding: 15px;
+  color: red;
+  text-decoration: none;
+
+
+  .logo {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+
+  nav {
+    ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+
+      li {
+        a {
+          color: white;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
