@@ -83,7 +83,7 @@ const server = http.createServer((req, res) => {
         `);
     }
     else if (url_req.pathname === '/file') {
-        const filePath = path.join(__dirname, 'index.html');
+        const filePath = path.join(__dirname, '/assets/x.html');
         fs.readFile(filePath, (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
