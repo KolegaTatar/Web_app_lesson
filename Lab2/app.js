@@ -80,7 +80,7 @@ app.get('/html', (req, res) => {
 });
 
 app.get('/file', (req, res) => {
-    const filePath = path.join(__dirname, 'index.html');
+    const filePath = path.join(__dirname, './assets/x.html');
     res.sendFile(filePath);
 });
 
