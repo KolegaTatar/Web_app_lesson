@@ -2,7 +2,7 @@
 
 | Data zadania | Nazwa (folder)         |
 |--------------|------------------------|
-| 16.09.2024   | Przyklad_folder_1      |
-| 19.09.2024   | Przyklad_folder_2      |
-| 2025-01-16   | Przyklad_folder_3      |
+| 16.09.2024 - 23.09.2024   | Lab1      |
+| 03.10.2024   | Lab2      |
+| 10.10.2024   | lab3 - project app      |
 
