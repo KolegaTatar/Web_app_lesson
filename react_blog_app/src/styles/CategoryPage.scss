@@ -1,6 +1,32 @@
 .category-page {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.category-page h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 40px;
+}
+
+.category-page .category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.category-page .category-button {
+  background-color: #f4c542;
+  color: #fff;
   padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.category-page .category-button:hover {
+  background-color: #e67e22;
+  transform: scale(1.05);
 }

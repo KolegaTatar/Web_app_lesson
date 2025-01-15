@@ -1,13 +1,18 @@
-import { useParams } from 'react-router-dom';
 import '../styles/CategoryPage.scss';
 
 function CategoryPage() {
-    const { category } = useParams<{ category: string }>();
+    const categories = ['Technologia', 'Podróże', 'Styl życia', 'Zdrowie', 'Finanse'];
 
     return (
         <div className="category-page">
-            <h1>Category: {category}</h1>
-            <p>List of posts in the {category} category.</p>
+            <h1>Kategorie</h1>
+            <div className="category-grid">
+                {categories.map((category, index) => (
+                    <button key={index} className="category-button">
+                        {category}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 }

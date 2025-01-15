@@ -1,19 +1,14 @@
-import { Link } from 'react-router-dom';
 import '../styles/Header.scss';
 
-function Header(){
+const Header = () => {
     return (
         <header className="header">
-            <div className="logo">
-                <Link to="/">BlogApp</Link>
+            <div className="logo">Blog</div>
+            <div className="nav">
+                <a href="/">Home</a>
+                <a href="/posts">Posty</a>
+                <a href="/categories">Kategorie</a>
             </div>
-            <nav>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/category/tech">Tech</Link></li>
-                    <li><Link to="/category/lifestyle">Lifestyle</Link></li>
-                </ul>
-            </nav>
         </header>
     );
 }

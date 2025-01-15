@@ -1,13 +1,17 @@
-import { useParams } from 'react-router-dom';
 import '../styles/PostPage.scss';
 
 function PostPage() {
-    const { id } = useParams<{ id: string }>();
-
     return (
         <div className="post-page">
-            <h1>Post {id}</h1>
-            <p>This is the content of the post with ID {id}.</p>
+            <h1>Tytuł wpisu</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius, nunc in tincidunt auctor, nisi nisl
+                tristique elit, non ullamcorper nisi elit id elit.
+            </p>
+            <p>
+                Morbi vulputate magna ac ex cursus, vel facilisis turpis fringilla. Aenean mollis augue at nibh laoreet
+                hendrerit.
+            </p>
         </div>
     );
 }

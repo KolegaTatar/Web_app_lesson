@@ -1,23 +1,23 @@
-import { Link } from 'react-router-dom';
 import '../styles/PostList.scss';
 
 function PostList() {
-    const posts = [
-        { id: 1, title: 'Post 1', category: 'tech' },
-        { id: 2, title: 'Post 2', category: 'lifestyle' },
-        { id: 3, title: 'Post 3', category: 'tech' },
-    ];
+    const posts = Array.from({ length: 12 }, (_, i) => ({
+        title: `Artykuł ${i + 1}`,
+        excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    }));
 
     return (
         <div className="post-list">
-            {posts.map(post => (
-                <div key={post.id} className="post-item">
-                    <Link to={`/post/${post.id}`}>
+            <h1>Lista artykułów</h1>
+            <div className="grid">
+                {posts.map((post, index) => (
+                    <article className="post" key={index}>
                         <h2>{post.title}</h2>
-                        <p>Category: {post.category}</p>
-                    </Link>
-                </div>
-            ))}
+                        <p>{post.excerpt}</p>
+                        <a href="#">Czytaj więcej</a>
+                    </article>
+                ))}
+            </div>
         </div>
     );
 }

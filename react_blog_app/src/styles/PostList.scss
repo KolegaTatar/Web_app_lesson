@@ -1,24 +1,53 @@
 .post-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 20px 0;
 }
 
-.post-item {
-  background-color: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.post-list h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-  h2 {
-    margin: 0;
-  }
+.post-list .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
 
-  p {
-    color: #7f8c8d;
-  }
+.post-list .post {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
 
-  &:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
+.post-list .post:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.post-list .post h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.post-list .post p {
+  font-size: 1rem;
+  color: #7f8c8d;
+}
+
+.post-list .post a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #f4c542;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.post-list .post a:hover {
+  color: #e67e22;
 }
