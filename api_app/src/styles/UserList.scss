@@ -1,13 +1,13 @@
-.post-list {
+.user-list {
   list-style-type: none;
   padding: 0;
 }
 
-.post-list ul {
+.user-list ul {
   margin: 0;
 }
 
-.post-list li {
+.user-list li {
   padding: 15px;
   background-color: #fff;
   margin: 10px 0;
@@ -16,20 +16,20 @@
   list-style-type: circle !important;
 }
 
-.post-list h3 {
+.user-list h3 {
   font-size: 1.5rem;
   color: #333;
 }
 
-.post-list p {
+.user-list p {
   color: #666;
 }
 
-.post-list a {
+.user-list a {
   text-decoration: none;
   color: #007bff;
 }
 
-.post-list a:hover {
+.user-list a:hover {
   text-decoration: underline;
 }

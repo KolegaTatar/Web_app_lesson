@@ -1,0 +1,145 @@
+.home-page {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+.hero {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+.hero .btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #fff;
+  color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.hero .btn:hover {
+  background-color: #555;
+  color: white;
+}
+
+
+.featured {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.featured h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+
+.about {
+  background-color: #fefefe;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.testimonials {
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.testimonials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.testimonial {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.testimonial p:last-child {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .featured h2, .about h2, .testimonials h2 {
+    font-size: 2rem;
+  }
+
+  .card, .testimonial {
+    padding: 15px;
+  }
+
+  .hero .btn {
+    padding: 8px 16px;
+  }
+}

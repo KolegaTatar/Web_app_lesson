@@ -9,26 +9,19 @@ import Footer from './components/Footer';
 import './App.scss';
 
 const App = () => {
-    const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-
-    const toggleTheme = () => {
-        setIsDarkMode(prevMode => !prevMode);
-    };
 
     return (
         <Router>
-            <div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
-                <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-                <main className="main-content">
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/posts" element={<PostList />} />
-                        <Route path="/categories" element={<CategoryPage />} />
-                        <Route path="/posts/:id" element={<PostPage />} />
-                    </Routes>
-                </main>
-                <Footer />
-            </div>
+            <Header/>
+            <main className="main-content">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/posts" element={<PostList />} />
+                    <Route path="/categories" element={<CategoryPage />} />
+                    <Route path="/posts/:id" element={<PostPage />} />
+                </Routes>
+            </main>
+            <Footer />
         </Router>
     );
 }

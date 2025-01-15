@@ -1,36 +1,33 @@
-import React, { useEffect, useState } from 'react';
+// src/pages/PostPage.tsx
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/PostDetails.scss';
 
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-    userId: number;
-}
-
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
-
-const PostPage: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
-    const [post, setPost] = useState<Post | null>(null);
-    const [user, setUser] = useState<User | null>(null);
+function PostPage() {
+    const { id } = useParams<{ id: string }>(); // Pobieranie parametru 'id' z URL
+    const [post, setPost] = useState<any>(null);
+    const [author, setAuthor] = useState<any>(null);
 
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`).then((response) => {
-            setPost(response.data);
-            return axios.get(`https://jsonplaceholder.typicode.com/users/${response.data.userId}`);
-        }).then((response) => {
-            setUser(response.data);
-        });
+        if (id) {
+            // Pobierz dane postu
+            axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+                .then(response => {
+                    setPost(response.data);
+                })
+                .catch(error => console.error(error));
+
+            // Pobierz dane użytkownika (autora postu)
+            axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+                .then(response => {
+                    setAuthor(response.data);
+                })
+                .catch(error => console.error(error));
+        }
     }, [id]);
 
-    if (!post || !user) {
+    if (!post || !author) {
         return <div>Loading...</div>;
     }
 
@@ -38,13 +35,13 @@ const PostPage: React.FC = () => {
         <div className="post-details">
             <h1>{post.title}</h1>
             <p>{post.body}</p>
-            <div className="user-info">
-                <h2>Autor:</h2>
-                <p>{user.name}</p>
-                <p>{user.email}</p>
+            <div className="author-info">
+                <h3>Autor: {author.name}</h3>
+                <p>Email: {author.email}</p>
+                <p>Telefon: {author.phone}</p>
             </div>
         </div>
     );
-};
+}
 
 export default PostPage;
