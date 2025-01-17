@@ -11,14 +11,13 @@ function PostPage() {
 
     useEffect(() => {
         if (id) {
-            // Pobierz dane postu
+
             axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
                 .then(response => {
                     setPost(response.data);
                 })
                 .catch(error => console.error(error));
 
-            // Pobierz dane użytkownika (autora postu)
             axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
                 .then(response => {
                     setAuthor(response.data);
@@ -38,7 +37,13 @@ function PostPage() {
             <div className="author-info">
                 <h3>Autor: {author.name}</h3>
                 <p>Email: {author.email}</p>
+                <p>Nazwa użytkownika: {author.username}</p>
+                <p>Miasto: {author.address.city}</p>
+                <p>Ulica: {author.address.street}</p>
+                <p>Kod pocztowy: {author.address.zipcode}</p>
                 <p>Telefon: {author.phone}</p>
+                <p>Strona: {author.website}</p>
+                <p>Nazwa firmy: {author.company.name}</p>
             </div>
         </div>
     );

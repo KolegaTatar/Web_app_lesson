@@ -4,14 +4,14 @@ import '../styles/Home.scss';
 function HomePage() {
     return (
         <div className="home-page">
-            {/* Powitanie na stronie głównej */}
+
             <header className="hero">
                 <h1>Witamy na naszym blogu!</h1>
                 <p>Twoje źródło wiedzy, inspiracji i rozrywki. Odkryj coś nowego każdego dnia!</p>
                 <Link to="/posts" className="btn">Zobacz posty</Link>
             </header>
 
-            {/* Sekcja Wyróżnione Artykuły */}
+
             <section className="featured">
                 <h2>Wyróżnione artykuły</h2>
                 <div className="featured-grid">
@@ -30,13 +30,13 @@ function HomePage() {
                 </div>
             </section>
 
-            {/* Sekcja O nas */}
+
             <section className="about">
                 <h2>O naszym blogu</h2>
                 <p>Jesteśmy zespołem pasjonatów, którzy chcą dzielić się swoją wiedzą i doświadczeniem z innymi. Naszym celem jest inspirowanie i edukowanie naszych czytelników na temat technologii, stylu życia, podróży i wielu innych fascynujących tematów.</p>
             </section>
 
-            {/* Sekcja Opinie */}
+
             <section className="testimonials">
                 <h2>Opinie naszych czytelników</h2>
                 <div className="testimonial">
