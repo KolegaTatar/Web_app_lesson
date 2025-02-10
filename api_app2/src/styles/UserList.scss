@@ -1,0 +1,35 @@
+.user-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-list ul {
+  margin: 0;
+}
+
+.user-list li {
+  padding: 15px;
+  background-color: #fff;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  list-style-type: circle !important;
+}
+
+.user-list h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.user-list p {
+  color: #666;
+}
+
+.user-list a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.user-list a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,43 @@
+.post-details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.post-details h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.post-details p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.post-details a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.post-details a:hover {
+  text-decoration: underline;
+}
+
+.author-info {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.author-info h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.author-info p {
+  font-size: 1rem;
+  color: #666;
+}
