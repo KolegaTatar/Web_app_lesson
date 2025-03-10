@@ -11,7 +11,6 @@ function HomePage() {
                 <Link to="/posts" className="btn">Zobacz posty</Link>
             </header>
 
-
             <section className="featured">
                 <h2>Wyróżnione artykuły</h2>
                 <div className="featured-grid">
@@ -30,12 +29,10 @@ function HomePage() {
                 </div>
             </section>
 
-
             <section className="about">
                 <h2>O naszym blogu</h2>
                 <p>Jesteśmy zespołem pasjonatów, którzy chcą dzielić się swoją wiedzą i doświadczeniem z innymi. Naszym celem jest inspirowanie i edukowanie naszych czytelników na temat technologii, stylu życia, podróży i wielu innych fascynujących tematów.</p>
             </section>
-
 
             <section className="testimonials">
                 <h2>Opinie naszych czytelników</h2>

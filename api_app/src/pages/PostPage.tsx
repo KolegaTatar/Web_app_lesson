@@ -5,7 +5,7 @@ import axios from 'axios';
 import '../styles/PostDetails.scss';
 
 function PostPage() {
-    const { id } = useParams<{ id: string }>(); // Pobieranie parametru 'id' z URL
+    const { id } = useParams<{ id: string }>();
     const [post, setPost] = useState<any>(null);
     const [author, setAuthor] = useState<any>(null);
 

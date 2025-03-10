@@ -1,34 +1,40 @@
-// src/pages/PostPage.tsx
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/PostDetails.scss';
 
+const fetchPost = async (id: string) => {
+    const { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+    return data;
+};
+
+const fetchAuthor = async (id: string) => {
+    const { data } = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+    return data;
+};
+
 function PostPage() {
-    const { id } = useParams<{ id: string }>(); // Pobieranie parametru 'id' z URL
-    const [post, setPost] = useState<any>(null);
-    const [author, setAuthor] = useState<any>(null);
+    const { id } = useParams<{ id: string }>();
 
-    useEffect(() => {
-        if (id) {
+    if (!id) return <div>Nieprawidłowe ID posta.</div>;
 
-            axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-                .then(response => {
-                    setPost(response.data);
-                })
-                .catch(error => console.error(error));
+    const { data: post, isLoading: postLoading, error: postError } = useQuery({
+        queryKey: ['post', id],
+        queryFn: () => fetchPost(id),
+    });
 
-            axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-                .then(response => {
-                    setAuthor(response.data);
-                })
-                .catch(error => console.error(error));
-        }
-    }, [id]);
+    const { data: author, isLoading: authorLoading, error: authorError } = useQuery({
+        queryKey: ['author', id],
+        queryFn: () => fetchAuthor(id),
+    });
 
-    if (!post || !author) {
-        return <div>Loading...</div>;
-    }
+    if (postLoading || authorLoading) return <div>Ładowanie...</div>;
+    if (postError || authorError) return (
+        <div>
+            <h2>Błąd podczas ładowania danych.</h2>
+            <p>{postError?.message || authorError?.message}</p>
+        </div>
+    );
 
     return (
         <div className="post-details">

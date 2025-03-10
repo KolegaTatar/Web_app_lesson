@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/UserPage.scss';
 
+
 function UserList({ users }: { users: any[] }) {
     return (
         <div className="user-list">
