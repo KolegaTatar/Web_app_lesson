@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import List
+import os
 
 @dataclass
 class Student:
@@ -14,37 +15,47 @@ class Course:
     student_id: int
     course_name: str
 
+
 def load_students(filename: str) -> dict:
     students = {}
-    with open(f"Python - zadanie 2/{filename}", "r") as file:
+    path = os.path.join("Python - zadanie 2", filename)
+    with open(path, "r", encoding="utf-8") as file:
         for line in file:
             try:
-                student_id, first_name, last_name, age = line.strip().split(", ")
+                student_id, first_name, last_name, age = line.strip().split(",")
                 students[int(student_id)] = Student(int(student_id), first_name, last_name, int(age), [])
             except ValueError:
-                print(f"Skipping malformed line in {filename}: {line.strip()}")
+                print(f"Pominięto błędną linię w {filename}: {line.strip()}")
     return students
 
 def load_courses(filename: str, students: dict):
-    with open(f"Python - zadanie 2/{filename}", "r") as file:
+    path = os.path.join("Python - zadanie 2", filename)
+    with open(path, "r", encoding="utf-8") as file:
         for line in file:
             try:
-                student_id, course_name = line.strip().split(", ")
+                student_id, course_name = line.strip().split(",")
                 if int(student_id) in students:
                     students[int(student_id)].courses.append(course_name)
             except ValueError:
-                print(f"Skipping malformed line in {filename}: {line.strip()}")
+                print(f"Pominięto błędną linię w {filename}: {line.strip()}")
+
 
 def print_students(students: dict):
     for student in students.values():
-        print(f"{student.first_name} {student.last_name} ({student.age} lat): {', '.join(student.courses)}")
-        filename = f"Python - zadanie 2/{student.first_name.lower()}_{student.last_name.lower()}.txt"
-        
+        courses_str = ', '.join(student.courses)
+        print(f"{student.first_name} {student.last_name} ({student.age} lat): {courses_str}")
+
+        filename = f"{student.first_name.lower()}_{student.last_name.lower()}.txt"
+        full_path = os.path.join("Python - zadanie 2", filename)
+
         try:
-            with open(filename, "x") as file: 
-                file.write("Kursy:\n" + "\n".join(f"- {course}" for course in student.courses))
+            with open(full_path, "x", encoding="utf-8") as file:
+                file.write("Kursy:\n")
+                for course in student.courses:
+                    file.write(f"- {course}\n")
         except FileExistsError:
-            print(f"File for {student.first_name} {student.last_name} already exists.")
+            print(f"Plik {filename} już istnieje – pominięto zapis.")
+
 
 def main():
     students = load_students("students.txt")
