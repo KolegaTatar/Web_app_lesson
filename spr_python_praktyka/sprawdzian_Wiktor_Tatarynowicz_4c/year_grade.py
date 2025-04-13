@@ -1,3 +1,6 @@
+__copyright__ = "Zespół Szkół Komunikacji"
+__author__ = "Wiktor Tatarynowicz 4c"
+
 def year_grade(average: float) -> int:
     if average >= 5.5:
         return 6
@@ -11,3 +14,4 @@ def year_grade(average: float) -> int:
         return 2
     else:
         return 1
+    

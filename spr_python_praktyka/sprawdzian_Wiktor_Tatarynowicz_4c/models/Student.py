@@ -1,3 +1,6 @@
+__copyright__ = "Zespół Szkół Komunikacji"
+__author__ = "Wiktor Tatarynowicz 4c"
+
 from datetime import date, datetime
 
 class Student:
@@ -9,7 +12,9 @@ class Student:
 
     @property
     def age(self) -> int:
-        return datetime.now().year - self.birth_date.year
+        today = date.today()
+        return today.year - self.birth_date.year
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name} ({self.age})"
+    

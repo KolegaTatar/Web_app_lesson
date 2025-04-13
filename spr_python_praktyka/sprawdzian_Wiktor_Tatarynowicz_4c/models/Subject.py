@@ -1,3 +1,6 @@
+__copyright__ = "Zespół Szkół Komunikacji"
+__author__ = "Wiktor Tatarynowicz 4c"
+
 from models.Teacher import Teacher
 
 class Subject:
@@ -8,3 +11,4 @@ class Subject:
 
     def __str__(self) -> str:
         return f"{self.name} {self.teacher}"
+    

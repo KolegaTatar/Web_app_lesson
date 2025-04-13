@@ -1,3 +1,6 @@
+__copyright__ = "Zespół Szkół Komunikacji"
+__author__ = "Wiktor Tatarynowicz 4c"
+
 class Teacher:
     def __init__(self, _id: int, name: str, surname: str):
         self._id = _id
@@ -6,3 +9,4 @@ class Teacher:
 
     def __str__(self) -> str:
         return f"{self.name} {self.surname}"
+
