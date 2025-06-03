@@ -6,11 +6,13 @@
     <h2>{{ post.title }}</h2>
     <p>{{ post.content }}</p>
     <p class="text-muted">{{ post.created_at|date:"d.m.Y H:i" }}</p>
+    <a href="{% url 'edit_post' post.pk %}" class="btn btn-warning btn-sm">Edytuj</a>
+    <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger btn-sm">Usuń</a>
   </div>
 </div>
 
 <h4>Komentarze:</h4>
-<ul class="list-group">
+<ul class="list-group mb-4">
   {% for comment in post.comments.all %}
     <li class="list-group-item">
       <strong>{{ comment.author }}</strong>: {{ comment.text }}
@@ -19,5 +21,13 @@
     <li class="list-group-item">Brak komentarzy.</li>
   {% endfor %}
 </ul>
+
+<h4>Dodaj komentarz:</h4>
+<form method="post">
+  {% csrf_token %}
+  {{ comment_form.as_p }}
+  <button type="submit" class="btn btn-success">Dodaj komentarz</button>
+</form>
+
 <a href="{% url 'post_list' %}" class="btn btn-secondary mt-3">← Powrót</a>
 {% endblock %}
